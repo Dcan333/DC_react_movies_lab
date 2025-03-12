@@ -35,23 +35,6 @@ const ratings = [
     },
 ];
 
-const [open, setOpen] = useState(false);
-const navigate = useNavigate();
-
-const handleSnackClose = (event) => {
-    setOpen(false);
-    navigate("/movies/favorites");
-};
-
-const onSubmit = (review) => {
-    review.movieId = movie.id;
-    review.rating = rating;
-    // console.log(review);
-    context.addReview(movie, review);
-    setOpen(true); // NEW
-};
-
-
 const styles = {
     root: {
         marginTop: 2,
@@ -84,6 +67,23 @@ const ReviewForm = ({ movie }) => {
 
     const [rating, setRating] = useState(3);
 
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const handleSnackClose = (event) => {
+        setOpen(false);
+        navigate("/movies/favorites");
+    };
+
+    const onSubmit = (review) => {
+        review.movieId = movie.id;
+        review.rating = rating;
+        // console.log(review);
+        context.addReview(movie, review);
+        setOpen(true); // NEW
+    };
+
+
     const defaultValues = {
         author: "",
         review: "",
@@ -101,13 +101,6 @@ const ReviewForm = ({ movie }) => {
     const handleRatingChange = (event) => {
         setRating(event.target.value);
     };
-
-    const onSubmit = (review) => {
-        review.movieId = movie.id;
-        review.rating = rating;
-        context.addReview(movie, review);
-    };
-
 
     return (
         <Box component="div" sx={styles.root}>
