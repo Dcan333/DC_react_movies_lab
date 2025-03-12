@@ -26,33 +26,33 @@ export default function FilterMoviesCard(props) {
     const { data, error, isPending, isError } = useQuery({
         queryKey: ['genres'],
         queryFn: getGenres,
-      });
-    
-      if (isPending) {
+    });
+
+    if (isPending) {
         return <Spinner />;
-      }
-    
-      if (isError) {
+    }
+
+    if (isError) {
         return <h1>{error.message}</h1>;
-      }
-      const genres = data.genres;
-      if (genres[0].name !== "All"){
+    }
+    const genres = data.genres;
+    if (genres[0].name !== "All") {
         genres.unshift({ id: "0", name: "All" });
-      }
-    
-      const handleChange = (e, type, value) => {
+    }
+
+    const handleChange = (e, type, value) => {
         e.preventDefault();
-        props.onUserInput(type, value); 
-      };
-    
-      const handleTextChange = (e, props) => {
+        props.onUserInput(type, value);
+    };
+
+    const handleTextChange = (e, props) => {
         handleChange(e, "name", e.target.value);
-      };
-    
-      const handleGenreChange = (e) => {
+    };
+
+    const handleGenreChange = (e) => {
         handleChange(e, "genre", e.target.value);
-      };
-    
+    };
+
 
 
 
