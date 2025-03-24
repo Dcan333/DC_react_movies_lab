@@ -37,7 +37,7 @@ const PlaylistMoviesPage = () => {
 
   return (
     <PageTemplate
-      title="my upcoming movies"
+      title="Movies To Watch Later"
       movies={movies}
       action={(movie) => {
         return (
