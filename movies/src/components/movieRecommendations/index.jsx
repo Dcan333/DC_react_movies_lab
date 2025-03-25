@@ -23,7 +23,7 @@ const MovieRecommendations = ({ movie }) => {
         return <h1>{error.message}</h1>
     }
 
-    const recommendations = data.results;
+    const recommendations = data.results.slice(0, 4);
 
     return (
         <>
