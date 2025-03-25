@@ -28,10 +28,10 @@ const MovieRecommendations = ({ movie }) => {
 
     return (
         <>
-            <Typography variant="h5" component="h3" sx={{ marginTop: 0 }}>
-                Viewers also liked...
+            <Typography variant="h5" component="h3" sx={{ marginTop: 2 }}>
+                Viewers also enjoyed
             </Typography>
-            <Grid container spacing={35} sx={{ marginTop: 1 }}>
+            <Grid container spacing={[1,35]} sx={{ marginTop: 1 }} >
                 <MovieList
                     movies={recommendations}
                     action={(movie) => (

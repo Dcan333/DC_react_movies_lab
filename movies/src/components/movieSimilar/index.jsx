@@ -31,7 +31,7 @@ const SimilarMovies = ({ movie }) => {
             <Typography variant="h5" component="h3" sx={{ marginTop: 2 }}>
                 Similar Movies
             </Typography>
-            <Grid container spacing={35} sx={{ marginTop: 1 }}>
+            <Grid container spacing={[2, 35]} sx={{ marginTop: 1 }}>
                 <MovieList
                     movies={similar}
                     action={(movie) => (
