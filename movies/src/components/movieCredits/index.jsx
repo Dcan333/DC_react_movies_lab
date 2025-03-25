@@ -122,7 +122,7 @@ const MovieCredits = ({ movie }) => {
                                 <Typography variant="body2" component="p" fontWeight="bold">
                                     <Link
                                         component="button"
-                                        onClick={() => window.open(`https://www.google.com/search?q=${encodeURIComponent(actor.name + " actor")}`, "_blank")}
+                                        onClick={() => window.open(`https://www.google.com/search?q=${encodeURIComponent(`${actor.name} actor "${movie.title}" and other movies`)}`, "_blank")}
 
                                     >{actor.name}</Link>
                                     {renderGender(actor.gender)}
