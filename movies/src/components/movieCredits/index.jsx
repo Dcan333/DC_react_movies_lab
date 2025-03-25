@@ -31,11 +31,12 @@ const MovieCredits = ({ movie }) => {
  
     const cast = data.cast.slice(0, 10);
 
+    // Render gender function (It rhymes!) for displaying an actors gender (it's the only other information they have really)  
     const renderGender = (gender) => {
-        if(gender = 1){
+        if(gender === 1){
             return <FemaleIcon/>
         }
-        else if (gender = 2){
+        else if (gender === 2){
             return < MaleIcon/>
         }
         else{
