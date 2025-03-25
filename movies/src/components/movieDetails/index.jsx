@@ -9,6 +9,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
+import MovieRecommendations from "../movieRecommendations";
 
 
 const root = {
@@ -73,6 +74,10 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           </li>
         ))}
       </Paper>
+
+        {/* component for movie recs */}
+      <MovieRecommendations movie={movie} />
+
       <Fab
         color="secondary"
         variant="extended"
