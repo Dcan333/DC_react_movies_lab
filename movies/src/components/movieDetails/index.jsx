@@ -29,8 +29,19 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
 
 
   return (
+
     <>
-      <Typography variant="h5" component="h3">
+      {movie.backdrop_path && (
+        <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt={`${movie.title} backdrop`}
+        style={{width:"100%", maxHeight: "300px", pt:"150%", objectFit: "cover"}}
+        />
+
+      )
+
+      }
+
+
+      <Typography variant="h3" component="h3" style={{textAlign: "center"}}>
         Overview
       </Typography>
 
@@ -79,7 +90,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
 
       {/* component for movie recs */}
       <MovieCredits movie={movie} />
-      
+
       {/* component for movie recs */}
       <MovieRecommendations movie={movie} />
 
