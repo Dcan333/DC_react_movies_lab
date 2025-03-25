@@ -11,6 +11,9 @@ import placeholderImage from '../../images/film-poster-placeholder.png';
 import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
 import PersonIcon from '@mui/icons-material/Person';
+import StarIcon from '@mui/icons-material/Star';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+
 
 
 
@@ -28,22 +31,70 @@ const MovieCredits = ({ movie }) => {
         return <h1>{error.message}</h1>
     }
 
- 
+
     const cast = data.cast.slice(0, 10);
 
     // Render gender function (It rhymes!) for displaying an actors gender (it's the only other information they have really)  
     const renderGender = (gender) => {
-        if(gender === 1){
-            return <FemaleIcon/>
+        if (gender === 1) {
+            return <FemaleIcon fontSize="small" sx={{ color: "pink", display: "inline" }} />
         }
-        else if (gender === 2){
-            return < MaleIcon/>
+        else if (gender === 2) {
+            return < MaleIcon fontSize="small" sx={{ color: "blue", display: "-ms-inline-grid" }} />
         }
-        else{
-            return <PersonIcon/>
+        else {
+            return <PersonIcon fontSize="small" sx={{ color: "grey", display: "inline" }} />
         }
     }
-  
+
+    const renderPopularity = (popularity) => {
+        if (popularity >= 2) {
+            return <>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            </>
+        }
+        else if (popularity >= 1 && popularity < 2) {
+            return <>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            </>
+        }
+        else if (popularity < 1 && popularity >=0.5) {
+            return <>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            </>
+        }
+        else if (popularity >=0.5 && popularity <=1) {
+            return <>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            </>
+        }
+        else {
+            return <>
+            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+            </>
+        }
+    }
+
     return (
         <>
             <Typography variant="h5" component="h3" sx={{ marginTop: 2 }}>
@@ -68,13 +119,15 @@ const MovieCredits = ({ movie }) => {
                             {/* actor info for their name and the character theyre playing */}
                             <CardContent>
                                 <Typography variant="body2" component="p" fontWeight="bold">
-                                    {actor.name}
-                                    {renderGender(actor.gender)}
+                                    <span >{actor.name}{renderGender(actor.gender)}</span>
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                Popularity: {renderPopularity(actor.popularity)}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
                                     {actor.character}
                                 </Typography>
-                                
+
                             </CardContent>
                         </Card>
                     </Grid>
@@ -82,7 +135,7 @@ const MovieCredits = ({ movie }) => {
                 ))}
             </Grid>
         </>
-            );
+    );
 };
 
-            export default MovieCredits;
+export default MovieCredits;
