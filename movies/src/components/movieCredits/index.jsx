@@ -7,7 +7,10 @@ import Spinner from '../spinner'
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import placeholderImage from '../../images/film-poster-placeholder.png'; // Make sure this path is correct
+import placeholderImage from '../../images/film-poster-placeholder.png';
+import MaleIcon from '@mui/icons-material/Male';
+import FemaleIcon from '@mui/icons-material/Female';
+import PersonIcon from '@mui/icons-material/Person';
 
 
 
@@ -27,6 +30,18 @@ const MovieCredits = ({ movie }) => {
 
  
     const cast = data.cast.slice(0, 10);
+
+    const renderGender = (gender) => {
+        if(gender = 1){
+            return <FemaleIcon/>
+        }
+        else if (gender = 2){
+            return < MaleIcon/>
+        }
+        else{
+            return <PersonIcon/>
+        }
+    }
   
     return (
         <>
@@ -53,6 +68,7 @@ const MovieCredits = ({ movie }) => {
                             <CardContent>
                                 <Typography variant="body2" component="p" fontWeight="bold">
                                     {actor.name}
+                                    {renderGender(actor.gender)}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
                                     {actor.character}
