@@ -33,11 +33,9 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
     <>
       {movie.backdrop_path && (
         <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt={`${movie.title} backdrop`}
-        style={{width:"100%", maxHeight: "300px", pt:"150%", objectFit: "cover"}}
+        style={{width:"100%", maxHeight: "300px", pt:"150%", objectFit: "cover", marginBottom: "20px"}}
         />
-
       )
-
       }
 
 

@@ -18,6 +18,7 @@ import Avatar from '@mui/material/Avatar';
 
 
 
+
 export default function MovieCard({ movie, action }) {
 
   const { favorites, addToFavorites } = useContext(MoviesContext);
@@ -81,7 +82,7 @@ export default function MovieCard({ movie, action }) {
 
         <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
-            More Info ...
+            More Info
           </Button>
         </Link>
 
