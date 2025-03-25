@@ -23,6 +23,7 @@ const MovieRecommendations = ({ movie }) => {
         return <h1>{error.message}</h1>
     }
 
+    // slice method in javascript to take a portion of the generated array
     const recommendations = data.results.slice(0, 4);
 
     return (
@@ -30,7 +31,7 @@ const MovieRecommendations = ({ movie }) => {
             <Typography variant="h5" component="h3" sx={{ marginTop: 2 }}>
                 Recommended Movies
             </Typography>
-            <Grid container spacing={5} sx={{ marginTop: 1 }}>
+            <Grid container spacing={35} sx={{ marginTop: 1 }}>
                 <MovieList
                     movies={recommendations}
                     action={(movie) => (
