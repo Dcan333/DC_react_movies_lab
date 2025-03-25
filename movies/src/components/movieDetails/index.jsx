@@ -11,6 +11,7 @@ import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
 import MovieRecommendations from "../movieRecommendations";
 import SimilarMovies from "../movieSimilar";
+import MovieCredits from "../movieCredits";
 
 
 const root = {
@@ -78,10 +79,12 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
 
       {/* component for movie recs */}
       <MovieCredits movie={movie} />
-      {/* component for similar movies */}
-      <SimilarMovies movie={movie} />
+      
       {/* component for movie recs */}
       <MovieRecommendations movie={movie} />
+
+      {/* component for similar movies */}
+      <SimilarMovies movie={movie} />
 
 
       <Fab
