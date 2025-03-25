@@ -3,7 +3,7 @@ import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import MonetizationIcon from "@mui/icons-material/MonetizationOn";
-import StarRate from "@mui/icons-material/StarRate";
+import StarsIcon from '@mui/icons-material/Stars';
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
@@ -56,7 +56,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           label={`${movie.revenue.toLocaleString()}`}
         />
         <Chip
-          icon={<StarRate />}
+          icon={<StarsIcon />}
           label={`${movie.vote_average} (${movie.vote_count})`}
         />
         <Chip label={`Released: ${movie.release_date}`} />
