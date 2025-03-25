@@ -76,7 +76,8 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         ))}
       </Paper>
 
-
+      {/* component for movie recs */}
+      <MovieCredits movie={movie} />
       {/* component for similar movies */}
       <SimilarMovies movie={movie} />
       {/* component for movie recs */}
