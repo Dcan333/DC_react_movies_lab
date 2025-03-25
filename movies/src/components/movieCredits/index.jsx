@@ -7,12 +7,13 @@ import Spinner from '../spinner'
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import placeholderImage from '../../images/film-poster-placeholder.png';
-import MaleIcon from '@mui/icons-material/Male';
-import FemaleIcon from '@mui/icons-material/Female';
-import PersonIcon from '@mui/icons-material/Person';
-import StarIcon from '@mui/icons-material/Star';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import placeholderImage from "../../images/film-poster-placeholder.png";
+import MaleIcon from "@mui/icons-material/Male";
+import FemaleIcon from "@mui/icons-material/Female";
+import PersonIcon from "@mui/icons-material/Person";
+import StarIcon from "@mui/icons-material/Star";
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
+import Link from "@mui/material/Link";
 
 
 
@@ -50,47 +51,47 @@ const MovieCredits = ({ movie }) => {
     const renderPopularity = (popularity) => {
         if (popularity >= 2) {
             return <>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
             </>
         }
         else if (popularity >= 1 && popularity < 2) {
             return <>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
             </>
         }
-        else if (popularity < 1 && popularity >=0.5) {
+        else if (popularity < 1 && popularity >= 0.5) {
             return <>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
             </>
         }
-        else if (popularity >=0.5 && popularity <=1) {
+        else if (popularity >= 0.5 && popularity <= 1) {
             return <>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
             </>
         }
         else {
             return <>
-            <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
-            <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }}/>
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
             </>
         }
     }
@@ -119,10 +120,11 @@ const MovieCredits = ({ movie }) => {
                             {/* actor info for their name and the character theyre playing */}
                             <CardContent>
                                 <Typography variant="body2" component="p" fontWeight="bold">
-                                    <span >{actor.name}{renderGender(actor.gender)}</span>
+                                    <Link
+                                        component="button">{actor.name}</Link>{renderGender(actor.gender)}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
-                                Popularity: {renderPopularity(actor.popularity)}
+                                    Popularity: {renderPopularity(actor.popularity)}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
                                     {actor.character}
