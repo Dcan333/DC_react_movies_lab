@@ -1,5 +1,5 @@
 import React from "react";
-import { getMovieRecommendations } from "../../api/tmdb-api";
+import { getSimilarMovies } from "../../api/tmdb-api";
 import Grid from '@mui/material/Grid2';
 import Typography from "@mui/material/Typography";
 import MovieList from "../movieList";
@@ -9,10 +9,10 @@ import AddToFavoritesIcon from "../cardIcons/addToFavorites";
 import AddToUpcomingIcon from "../cardIcons/addToUpcoming";
 
 
-const MovieRecommendations = ({ movie }) => {
+const SimilarMovies = ({ movie }) => {
     const { data, error, isPending, isError } = useQuery({
-        queryKey: ['recommendations', {id: movie.id}],
-        queryFn: getMovieRecommendations,
+        queryKey: ['similar', {id: movie.id}],
+        queryFn: getSimilarMovies,
     })
 
     if (isPending) {
@@ -24,16 +24,16 @@ const MovieRecommendations = ({ movie }) => {
     }
 
     // slice method in javascript to take a portion of the generated array
-    const recommendations = data.results.slice(0, 2);
+    const similar = data.results.slice(0, 3);
 
     return (
         <>
-            <Typography variant="h5" component="h3" sx={{ marginTop: 0 }}>
-                Viewers also liked...
+            <Typography variant="h5" component="h3" sx={{ marginTop: 2 }}>
+                Similar Movies
             </Typography>
             <Grid container spacing={35} sx={{ marginTop: 1 }}>
                 <MovieList
-                    movies={recommendations}
+                    movies={similar}
                     action={(movie) => (
                         <>
                             <AddToFavoritesIcon movie={movie} />
@@ -46,4 +46,4 @@ const MovieRecommendations = ({ movie }) => {
     );
 };
 
-export default MovieRecommendations;
+export default SimilarMovies;
