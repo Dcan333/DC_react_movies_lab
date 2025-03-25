@@ -121,7 +121,11 @@ const MovieCredits = ({ movie }) => {
                             <CardContent>
                                 <Typography variant="body2" component="p" fontWeight="bold">
                                     <Link
-                                        component="button">{actor.name}</Link>{renderGender(actor.gender)}
+                                        component="button"
+                                        onClick={() => window.open(`https://www.google.com/search?q=${encodeURIComponent(actor.name + " actor")}`, "_blank")}
+
+                                    >{actor.name}</Link>
+                                    {renderGender(actor.gender)}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
                                     Popularity: {renderPopularity(actor.popularity)}
