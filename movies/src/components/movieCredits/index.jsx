@@ -14,7 +14,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import StarIcon from "@mui/icons-material/Star";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import Link from "@mui/material/Link";
-
+import theme from "../../theme";
 
 
 
@@ -51,49 +51,60 @@ const MovieCredits = ({ movie }) => {
     const renderPopularity = (popularity) => {
         if (popularity >= 2) {
             return <>
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
             </>
         }
         else if (popularity >= 1 && popularity < 2) {
             return <>
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
             </>
         }
         else if (popularity < 1 && popularity >= 0.5) {
             return <>
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
             </>
         }
         else if (popularity >= 0.5 && popularity <= 1) {
             return <>
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
             </>
         }
         else {
             return <>
-                <StarIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
-                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: 'gold' }} />
+                <StarIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
+                <StarOutlineIcon fontSize="small" sx={{ display: 'inline', color: theme.palette.secondary.main }} />
             </>
         }
+    }
+
+    const changeStyle = (mouseEvent, mouseIsOver) => {
+        if (mouseIsOver) {
+            mouseEvent.target.style.scale = "1.1"
+
+        }
+        else {
+            mouseEvent.target.style.scale = "1"
+        }
+
     }
 
     return (
@@ -105,37 +116,43 @@ const MovieCredits = ({ movie }) => {
                 {/*  same as in movieList */}
                 {cast.map((actor) => (
                     <Grid key={actor.id} xs={6} sm={4} md={3} lg={2}>
-                        <Card sx={{ height: '100%' }}>
-                            <CardMedia
-                                component="img"
-                                height="210"
-                                image={
-                                    // ternary operator 
-                                    actor.profile_path
-                                        ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
-                                        : placeholderImage
-                                }
-                                alt={actor.name}
-                            />
-                            {/* actor info for their name and the character theyre playing */}
-                            <CardContent>
-                                <Typography variant="body2" component="p" fontWeight="bold">
-                                    <Link
-                                        component="button"
-                                        onClick={() => window.open(`https://www.google.com/search?q=${encodeURIComponent(`${actor.name} actor "${movie.title}" and other movies`)}`, "_blank")}
+                        <div><Link
+                            component="button"
+                            onClick={() => window.open(`https://www.google.com/search?q=${encodeURIComponent(`${actor.name} actor "${movie.title}" and other movies`)}`, "_blank")}
+                            style={{
+                                cursor: "pointer",
+                                textDecoration: "none",
+                            }}>
+                            <Card sx={{ height: '100%' }}>
+                                <CardMedia
+                                    onMouseEnter={(mouseEvent) => changeStyle(mouseEvent, true)}
+                                    onMouseLeave={(mouseEvent) => changeStyle(mouseEvent, false)}
+                                    component="img"
+                                    height="210"
+                                    image={
+                                        // ternary operator 
+                                        actor.profile_path
+                                            ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
+                                            : placeholderImage
+                                    }
+                                    alt={actor.name}
+                                />
+                                {/* actor info for their name and the character theyre playing */}
+                                <CardContent>
+                                    <Typography variant="body2" component="p" fontWeight="bold">
+                                        {actor.name}
+                                        {renderGender(actor.gender)}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Popularity: {renderPopularity(actor.popularity)}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        {actor.character}
+                                    </Typography>
 
-                                    >{actor.name}</Link>
-                                    {renderGender(actor.gender)}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    Popularity: {renderPopularity(actor.popularity)}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {actor.character}
-                                </Typography>
-
-                            </CardContent>
-                        </Card>
+                                </CardContent>
+                            </Card>
+                        </Link></div>
                     </Grid>
 
                 ))}
