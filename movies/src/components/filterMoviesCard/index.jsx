@@ -5,7 +5,6 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
@@ -38,8 +37,10 @@ export default function FilterMoviesCard(props) {
     }
     const genres = data.genres;
     if (genres[0].name !== "All") {
-        genres.unshift({ id: "0", name: "All" });
+        genres.unshift({ id: "0", name: "Genre" });
     }
+
+   
 
     const handleChange = (e, type, value) => {
         e.preventDefault();
@@ -78,7 +79,7 @@ export default function FilterMoviesCard(props) {
                     value={props.titleFilter}
                     onChange={handleTextChange}
                 />
-                <InputLabel style={{color: theme.palette.secondary.main}}  id="genre-label">Genre</InputLabel>
+                
                 <FormControl sx={{ ...formControl }}>
                     
                     <Select
