@@ -34,60 +34,79 @@ export default function MovieCard({ movie, action }) {
     addToFavorites(movie);
   };
 
+  const changeStyle = (mouseEvent, mouseIsOver) => {
+    const buttonElement = document.getElementById(`more-info-button-${movie.id}`);
+    
+    if(buttonElement){
+    if (mouseIsOver) {
+      buttonElement.style.opacity = "1"
+
+    }
+    else {
+      buttonElement.style.opacity = "0"
+    }
+  }
+  }
+
 
 
   return (
-    <Card sx={{ minWidth: "300px" }}>
-      <CardHeader
-        avatar={
-          movie.favorite ? (
-            <Avatar sx={{ backgroundColor: 'red' }}>
-              <FavoriteIcon />
-            </Avatar>
-          ) : null
-        }
-        title={
-          <Typography variant="h5" component="p">
-            {movie.title}{" "}
-          </Typography>
-        }
-      />
-      <CardMedia
-        sx={{ pt:"150%" }}
-        image={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-            : img
-        }
-      />
-      <CardContent>
-        <Grid container>
-          <Grid size={{ xs: 6 }}>
-            <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
-              {movie.release_date}
+    <Link to={`/movies/${movie.id}`}
+      style={{ textDecoration: "none" }}
+    >
+      <Card sx={{ minWidth: "300px" }} onMouseEnter={(mouseEvent) => changeStyle(mouseEvent, true)}
+                                    onMouseLeave={(mouseEvent) => changeStyle(mouseEvent, false)} >
+        <CardHeader
+          avatar={
+            movie.favorite ? (
+              <Avatar sx={{ backgroundColor: 'red' }}>
+                <FavoriteIcon />
+              </Avatar>
+            ) : null
+          }
+          title={
+            <Typography variant="h5" component="p">
+              {movie.title}{" "}
             </Typography>
+          }
+        />
+        <CardMedia
+          sx={{ pt: "150%" }}
+          image={
+            movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              : img
+          }
+        />
+        <CardContent>
+          <Grid container>
+            <Grid size={{ xs: 6 }}>
+              <Typography variant="h6" component="p">
+                <CalendarIcon fontSize="small" />
+                {movie.release_date}
+              </Typography>
+            </Grid>
+            <Grid size={{ xs: 6 }}>
+              <Typography variant="h6" component="p">
+                <StarsIcon fontSize="small" />
+                {"  "} {movie.vote_average}{" "}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid size={{ xs: 6 }}>
-            <Typography variant="h6" component="p">
-              <StarsIcon fontSize="small" />
-              {"  "} {movie.vote_average}{" "}
-            </Typography>
-          </Grid>
-        </Grid>
-      </CardContent>
-      <CardActions disableSpacing>
+        </CardContent>
+        <CardActions disableSpacing>
 
-        {action(movie)}
+          {action(movie)}
 
-        <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
+          <Button variant="outlined" size="medium" color="primary" style={{opacity: "0", transition: "0.3s"}} id={`more-info-button-${movie.id}`}>
             More Info
           </Button>
-        </Link>
 
-      </CardActions>
 
-    </Card>
+
+        </CardActions>
+
+      </Card>
+    </Link>
   );
 }
