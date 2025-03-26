@@ -7,8 +7,8 @@ import Grid from "@mui/material/Grid2";
 function MovieListPageTemplate({ movies, title, action }) {
 
   const [nameFilter, setNameFilter] = useState("");
-  const [genreFilter, setGenreFilter] = useState("0");
-  const [ratingFilter, setratingFilter] = useState("0");
+  const [genreFilter, setGenreFilter] = useState("");
+  const [ratingFilter, setRatingFilter] = useState("0");
   const genreId = Number(genreFilter); 
   const ratingValue = Number(ratingFilter);
 
@@ -25,8 +25,8 @@ function MovieListPageTemplate({ movies, title, action }) {
 
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
-    else if (type === "genre") setNameFilter(value);
-    else if (type === "rating") setNameFilter(value);
+    else if (type === "genre") setGenreFilter(value);
+    else if (type === "rating") setRatingFilter(value);
 
   };
 

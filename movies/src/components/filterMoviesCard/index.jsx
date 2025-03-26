@@ -37,10 +37,15 @@ export default function FilterMoviesCard(props) {
     }
     const genres = data.genres;
     if (genres[0].name !== "All") {
-        genres.unshift({ id: "0", name: "Genre" });
+        genres.unshift({ id: "0", name: "All" });
     }
 
-   
+    const ratings = [
+        { id: "0", name: "Ratings" },
+        { id: "7", name: "7+" },
+        { id: "8", name: "8+" },
+        { id: "9", name: "9+" },
+    ]
 
     const handleChange = (e, type, value) => {
         e.preventDefault();
@@ -53,6 +58,10 @@ export default function FilterMoviesCard(props) {
 
     const handleGenreChange = (e) => {
         handleChange(e, "genre", e.target.value);
+    };
+
+    const handleRatingChange = (e) => {
+        handleChange(e, "rating", e.target.value);
     };
 
 
@@ -79,9 +88,9 @@ export default function FilterMoviesCard(props) {
                     value={props.titleFilter}
                     onChange={handleTextChange}
                 />
-                
+
                 <FormControl sx={{ ...formControl }}>
-                    
+
                     <Select
                         labelId="genre-label"
                         id="genre-select"
@@ -98,18 +107,31 @@ export default function FilterMoviesCard(props) {
                         })}
                     </Select>
                 </FormControl>
+
+                <FormControl sx={{ ...formControl }}>
+
+                    <Select
+                        labelId="rating-label"
+                        id="rating-select"
+                        defaultValue="0"
+                        value={props.ratingFilter}
+                        onChange={handleRatingChange}
+                    >
+                        {ratings.map((rating) => {
+                            return (
+                                <MenuItem key={rating.id} value={rating.id}>
+                                    {rating.name}
+                                </MenuItem>
+                            );
+                        })}
+                    </Select>
+                </FormControl>
             </CardContent>
             <CardMedia
                 sx={{ height: 300 }}
                 image={img}
                 title="Filter"
             />
-            <CardContent>
-                <Typography variant="h5" component="h1">
-                    <br/>
-                    <br />
-                </Typography>
-            </CardContent>
         </Card>
     );
 }
