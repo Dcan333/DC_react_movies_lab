@@ -99,10 +99,12 @@ const MovieCredits = ({ movie }) => {
     const changeStyle = (mouseEvent, mouseIsOver) => {
         if (mouseIsOver) {
             mouseEvent.target.style.scale = "1.1"
+            mouseEvent.target.style.transition = "0.3s";
 
         }
         else {
-            mouseEvent.target.style.scale = "1"
+            mouseEvent.target.style.scale = "1";
+            mouseEvent.target.style.transition = "0.3s";
         }
 
     }

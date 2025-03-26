@@ -15,6 +15,7 @@ import Grid from "@mui/material/Grid2";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router";
 import Avatar from '@mui/material/Avatar';
+import SwitchAccessShortcutIcon from '@mui/icons-material/SwitchAccessShortcut';
 
 
 
@@ -36,16 +37,14 @@ export default function MovieCard({ movie, action }) {
 
   const changeStyle = (mouseEvent, mouseIsOver) => {
     const buttonElement = document.getElementById(`more-info-button-${movie.id}`);
-    
-    if(buttonElement){
-    if (mouseIsOver) {
-      buttonElement.style.opacity = "1"
-
+    if (buttonElement) {
+      if (mouseIsOver) {
+        buttonElement.style.opacity = "1"
+      }
+      else {
+        buttonElement.style.opacity = "0"
+      }
     }
-    else {
-      buttonElement.style.opacity = "0"
-    }
-  }
   }
 
 
@@ -55,7 +54,7 @@ export default function MovieCard({ movie, action }) {
       style={{ textDecoration: "none" }}
     >
       <Card sx={{ minWidth: "300px" }} onMouseEnter={(mouseEvent) => changeStyle(mouseEvent, true)}
-                                    onMouseLeave={(mouseEvent) => changeStyle(mouseEvent, false)} >
+        onMouseLeave={(mouseEvent) => changeStyle(mouseEvent, false)} >
         <CardHeader
           avatar={
             movie.favorite ? (
@@ -98,8 +97,9 @@ export default function MovieCard({ movie, action }) {
 
           {action(movie)}
 
-          <Button variant="outlined" size="medium" color="primary" style={{opacity: "0", transition: "0.3s"}} id={`more-info-button-${movie.id}`}>
-            More Info
+          <Button variant="outlined"  size="large" color="primary"
+            style={{ opacity: "0", transition: "0.3s" }} id={`more-info-button-${movie.id}`}>
+             Details <SwitchAccessShortcutIcon size="large"/>
           </Button>
 
 
