@@ -13,6 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg';
 import { getGenres } from "../../api/tmdb-api";
+import theme from "../../theme";
 
 const formControl =
 {
@@ -59,7 +60,8 @@ export default function FilterMoviesCard(props) {
     return (
         <Card
             sx={{
-                backgroundColor: "rgb(204, 204, 0)"
+                backgroundColor: theme.palette.primary.main,
+                color: theme.palette.primary.contrastText,
             }}
             variant="outlined">
             <CardContent>
@@ -76,8 +78,9 @@ export default function FilterMoviesCard(props) {
                     value={props.titleFilter}
                     onChange={handleTextChange}
                 />
+                <InputLabel style={{color: theme.palette.secondary.main}}  id="genre-label">Genre</InputLabel>
                 <FormControl sx={{ ...formControl }}>
-                    <InputLabel id="genre-label">Genre</InputLabel>
+                    
                     <Select
                         labelId="genre-label"
                         id="genre-select"
@@ -102,8 +105,7 @@ export default function FilterMoviesCard(props) {
             />
             <CardContent>
                 <Typography variant="h5" component="h1">
-                    <SearchIcon fontSize="large" />
-                    Filter the movies.
+                    <br/>
                     <br />
                 </Typography>
             </CardContent>

@@ -14,6 +14,7 @@ import SimilarMovies from "../movieSimilar";
 import MovieCredits from "../movieCredits";
 
 
+
 const root = {
   display: "flex",
   justifyContent: "center",
@@ -42,7 +43,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
       <Typography variant="h3" component="h3" style={{textAlign: "center"}}>
         Overview
       </Typography>
-
+      
       <Typography variant="h6" component="p">
         {movie.overview}
       </Typography>

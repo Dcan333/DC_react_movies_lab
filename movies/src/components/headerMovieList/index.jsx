@@ -1,6 +1,6 @@
 import React from "react";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -26,11 +26,11 @@ const Header = (props) => {
         {title}
       </Typography>
       <IconButton aria-label="go back" onClick={() => navigate(-1)}>
-        <ArrowBackIcon color="primary" fontSize="large" />
+        <ArrowBackIosIcon color="primary" fontSize="large" />
       </IconButton>
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1)}>
-        <ArrowForwardIcon color="primary" fontSize="large" />
+        <ArrowForwardIosIcon color="primary" fontSize="large" />
       </IconButton>
 
 
